@@ -1,0 +1,64 @@
+/*
+    Estilos propios de Librería Umbral.
+    Complementan a Tailwind (cargado por CDN) y aportan:
+    - fallback de tipografías si no hay conexión a Google Fonts
+    - detalles de accesibilidad y impresión
+*/
+
+:root {
+    --fonte-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --fonte-sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Fallback: si las tipografías de Google no cargan, usamos las del sistema */
+body {
+    font-family: var(--fonte-sans);
+}
+
+.font-display,
+h1,
+h2,
+h3 {
+    font-family: var(--fonte-display);
+}
+
+/* Foco visible y consistente en todos los elementos interactivos */
+:focus-visible {
+    outline: 3px solid var(--color-arcilla, #b45309);
+    outline-offset: 2px;
+}
+
+/* Portada de libro sin imagen: placeholder con iniciales */
+.book-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 2 / 3;
+    background: linear-gradient(135deg, #f3ece2 0%, #e7dcc9 100%);
+    border: 1px solid rgba(36, 31, 26, 0.15);
+    border-radius: 0.25rem;
+    color: #57504a;
+    font-family: var(--fonte-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Textos largos (cuerpo de las entradas del blog y sinopsis) */
+.texto-largo p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+}
+
+/* Al imprimir, ocultamos la navegación */
+@media print {
+    nav,
+    footer,
+    a[href^="mailto"] {
+        display: none !important;
+    }
+
+    body {
+        background: #fff;
+        color: #000;
+    }
+}
