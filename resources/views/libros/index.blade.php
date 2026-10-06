@@ -11,7 +11,7 @@
     <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         @forelse ($books as $book)
             <li>
-                <article class="flex h-full flex-col rounded-xl border border-tinta/10 bg-white p-5">
+                <article class="flex h-full flex-col border border-tinta/20 p-5">
                     <a
                         href="{{ route('books.show', ['id' => $book->book_id]) }}"
                         class="group"
@@ -23,11 +23,11 @@
                     </a>
 
                     <div class="mt-4 flex flex-1 flex-col">
-                        <p class="text-xs font-semibold uppercase tracking-wide text-arcilla">
+                        <p class="text-xs text-tinta-suave">
                             {{ $book->publisher?->name ?? 'Sin editorial' }}
                         </p>
                         <h2 class="mt-1 font-display text-xl font-semibold">
-                            <a href="{{ route('books.show', ['id' => $book->book_id]) }}" class="hover:text-arcilla">
+                            <a href="{{ route('books.show', ['id' => $book->book_id]) }}" class="hover-linea">
                                 {{ $book->title }}
                             </a>
                         </h2>
@@ -45,7 +45,7 @@
 
                         <a
                             href="{{ route('books.show', ['id' => $book->book_id]) }}"
-                            class="mt-4 inline-block rounded border border-tinta/30 px-4 py-2 text-center text-sm font-semibold transition hover:border-arcilla hover:text-arcilla"
+                            class="btn-linea mt-4 px-4 py-2 text-center text-sm"
                         >
                             Ver detalle
                         </a>

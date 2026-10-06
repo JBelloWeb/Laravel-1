@@ -6,7 +6,7 @@
         <p class="mt-1 text-tinta-suave">Esta acción no se puede deshacer.</p>
     </header>
 
-    <article class="mt-6 max-w-2xl rounded-xl border border-red-200 bg-white p-6">
+    <article class="mt-6 max-w-2xl border border-red-300 bg-white p-6">
         <h2 class="font-display text-xl font-semibold">{{ $post->title }}</h2>
         <p class="mt-2 text-tinta-suave">{{ $post->summary }}</p>
 
@@ -15,7 +15,7 @@
                 @csrf
                 <button
                     type="submit"
-                    class="rounded bg-red-700 px-5 py-2 font-semibold text-white transition hover:bg-red-800"
+                    class="btn-peligro px-5 py-2"
                 >
                     Sí, eliminar
                 </button>
@@ -23,7 +23,7 @@
 
             <a
                 href="{{ route('admin.posts.index') }}"
-                class="rounded border border-tinta/30 px-5 py-2 font-semibold transition hover:border-arcilla hover:text-arcilla"
+                class="btn-linea px-5 py-2"
             >
                 Cancelar
             </a>

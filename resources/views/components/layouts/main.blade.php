@@ -6,8 +6,8 @@
         {{--
             $title llega desde el named slot <x-slot:title> de cada vista.
         --}}
-        <title>{{ ($title ?? 'Inicio') }} · Librería Umbral</title>
-        <meta name="description" content="{{ $description ?? 'Librería Umbral: catálogo de libros, reseñas y novedades del mundo editorial.' }}">
+        <title>{{ ($title ?? 'Inicio') }} · Librería Sempere</title>
+        <meta name="description" content="{{ $description ?? 'Librería Sempere: catálogo de libros, reseñas y novedades del mundo editorial.' }}">
 
         {{-- Tipografías (con fallback local en public/css/style.css) --}}
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,7 @@
         {{-- Enlace de salto para navegar con teclado (accesibilidad) --}}
         <a
             href="#contenido"
-            class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-tinta focus:px-4 focus:py-2 focus:text-papel"
+            class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-tinta focus:px-4 focus:py-2 focus:text-papel"
         >
             Saltar al contenido principal
         </a>
@@ -51,28 +51,28 @@
                 class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4"
             >
                 <a href="{{ route('index') }}" class="font-display text-2xl font-bold tracking-tight">
-                    Librería <span class="text-arcilla">Umbral</span>
+                    Librería <span class="text-arcilla">Sempere</span>
                 </a>
 
                 <ul class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
                     <li>
                         <a
                             href="{{ route('index') }}"
-                            @class(['hover:text-arcilla', 'text-arcilla' => request()->routeIs('index')])
+                            @class(['hover-linea', 'text-arcilla' => request()->routeIs('index')])
                             @if (request()->routeIs('index')) aria-current="page" @endif
                         >Inicio</a>
                     </li>
                     <li>
                         <a
                             href="{{ route('books.index') }}"
-                            @class(['hover:text-arcilla', 'text-arcilla' => request()->routeIs('books.*')])
+                            @class(['hover-linea', 'text-arcilla' => request()->routeIs('books.*')])
                             @if (request()->routeIs('books.*')) aria-current="page" @endif
                         >Libros</a>
                     </li>
                     <li>
                         <a
                             href="{{ route('posts.index') }}"
-                            @class(['hover:text-arcilla', 'text-arcilla' => request()->routeIs('posts.*')])
+                            @class(['hover-linea', 'text-arcilla' => request()->routeIs('posts.*')])
                             @if (request()->routeIs('posts.*')) aria-current="page" @endif
                         >Blog</a>
                     </li>
@@ -82,7 +82,7 @@
                             <li>
                                 <a
                                     href="{{ route('admin.home') }}"
-                                    class="hover:text-arcilla"
+                                    class="hover-linea"
                                     @if (request()->routeIs('admin.*')) aria-current="page" @endif
                                 >Administración</a>
                             </li>
@@ -92,7 +92,7 @@
                                 @csrf
                                 <button
                                     type="submit"
-                                    class="font-semibold hover:text-arcilla"
+                                    class="hover-linea"
                                 >
                                     Cerrar sesión ({{ auth()->user()->name }})
                                 </button>
@@ -102,7 +102,7 @@
                         <li>
                             <a
                                 href="{{ route('auth.login.form') }}"
-                                class="rounded bg-arcilla px-4 py-2 text-papel transition hover:bg-arcilla-hondo"
+                                class="btn-solido px-4 py-2"
                                 @if (request()->routeIs('auth.login.*')) aria-current="page" @endif
                             >Iniciar sesión</a>
                         </li>
@@ -121,10 +121,10 @@
                 <div
                     role="status"
                     @class([
-                        'mb-6 rounded-lg border px-4 py-3 text-sm font-medium',
-                        'border-green-300 bg-green-50 text-green-900' => $feedbackType === 'success',
-                        'border-red-300 bg-red-50 text-red-900' => $feedbackType === 'danger',
-                        'border-amber-300 bg-amber-50 text-amber-900' => $feedbackType === 'warning',
+                        'mb-6 border-l-4 px-4 py-3 text-sm font-medium',
+                        'border-green-700 bg-green-50 text-green-900' => $feedbackType === 'success',
+                        'border-red-700 bg-red-50 text-red-900' => $feedbackType === 'danger',
+                        'border-amber-700 bg-amber-50 text-amber-900' => $feedbackType === 'warning',
                     ])
                 >
                     {{ session('feedback.message') }}
@@ -137,7 +137,7 @@
         <footer class="mt-12 border-t border-tinta/10 bg-papel-hondo">
             <div class="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:grid-cols-2">
                 <div>
-                    <p class="font-display text-xl font-semibold">Librería Umbral</p>
+                    <p class="font-display text-xl font-semibold">Librería Sempere</p>
                     <p class="mt-2 text-sm text-tinta-suave">
                     Curaduría de libros, novedades y reseñas para lectores curiosos.
                     </p>
@@ -145,16 +145,16 @@
                 <div class="text-sm sm:text-right">
                     <nav aria-label="Navegación del pie de página">
                         <ul class="flex flex-wrap gap-4 sm:justify-end">
-                            <li><a href="{{ route('books.index') }}" class="hover:text-arcilla">Catálogo</a></li>
-                            <li><a href="{{ route('posts.index') }}" class="hover:text-arcilla">Blog</a></li>
-                            <li><a href="{{ route('auth.login.form') }}" class="hover:text-arcilla">Iniciar sesión</a></li>
+                            <li><a href="{{ route('books.index') }}" class="hover-linea">Catálogo</a></li>
+                            <li><a href="{{ route('posts.index') }}" class="hover-linea">Blog</a></li>
+                            <li><a href="{{ route('auth.login.form') }}" class="hover-linea">Iniciar sesión</a></li>
                         </ul>
                     </nav>
                     <address class="mt-3 not-italic text-tinta-suave">
                         Calle de los Libros 123 · Buenos Aires ·
-                        <a href="mailto:hola@libreriaumbral.test" class="underline hover:text-arcilla">hola@libreriaumbral.test</a>
+                        <a href="mailto:hola@libreriasempere.test" class="hover-linea">hola@libreriasempere.test</a>
                     </address>
-                    <p class="mt-2 text-tinta-suave">© 2026 Librería Umbral. Todos los derechos reservados.</p>
+                    <p class="mt-2 text-tinta-suave">© 2026 Librería Sempere. Todos los derechos reservados.</p>
                 </div>
             </div>
         </footer>

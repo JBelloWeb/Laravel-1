@@ -4,9 +4,9 @@
 
     <nav aria-label="Migas de pan" class="text-sm text-tinta-suave">
         <ol class="flex flex-wrap gap-2">
-            <li><a href="{{ route('index') }}" class="hover:text-arcilla">Inicio</a></li>
+            <li><a href="{{ route('index') }}" class="hover-linea">Inicio</a></li>
             <li aria-hidden="true">›</li>
-            <li><a href="{{ route('posts.index') }}" class="hover:text-arcilla">Blog</a></li>
+            <li><a href="{{ route('posts.index') }}" class="hover-linea">Blog</a></li>
             <li aria-hidden="true">›</li>
             <li aria-current="page" class="max-w-xs truncate font-medium text-tinta">{{ $post->title }}</li>
         </ol>
@@ -17,7 +17,7 @@
             @if ($post->categories->isNotEmpty())
                 <ul class="flex flex-wrap gap-2" aria-label="Categorías">
                     @foreach ($post->categories as $category)
-                        <li class="rounded-full bg-papel-hondo px-3 py-1 text-xs font-semibold text-tinta-suave">
+                        <li class="bg-papel-hondo px-3 py-1 text-xs font-semibold text-tinta-suave">
                             {{ $category->name }}
                         </li>
                     @endforeach
@@ -27,7 +27,7 @@
             <h1 class="mt-3 font-display text-3xl font-bold leading-tight">{{ $post->title }}</h1>
 
             <p class="mt-3 text-sm text-tinta-suave">
-                Por {{ $post->user?->name ?? 'Equipo Umbral' }}
+                Por {{ $post->user?->name ?? 'Equipo Sempere' }}
                 @if ($post->published_at)
                     ·
                     <time datetime="{{ $post->published_at->format('Y-m-d') }}">
@@ -41,7 +41,7 @@
             <img
                 src="{{ asset('storage/' . $post->cover) }}"
                 alt="Imagen de portada de la entrada {{ $post->title }}"
-                class="mt-6 w-full rounded-xl"
+                class="mt-6 w-full"
                 loading="lazy"
             >
         @endif
@@ -54,7 +54,7 @@
     </article>
 
     <footer class="mx-auto mt-10 max-w-3xl border-t border-tinta/10 pt-6">
-        <a href="{{ route('posts.index') }}" class="font-semibold text-arcilla hover:underline">
+        <a href="{{ route('posts.index') }}" class="font-semibold text-arcilla hover-linea">
             ← Volver al blog
         </a>
     </footer>

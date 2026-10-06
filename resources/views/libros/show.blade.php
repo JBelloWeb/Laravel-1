@@ -4,29 +4,29 @@
 
     <nav aria-label="Migas de pan" class="text-sm text-tinta-suave">
         <ol class="flex flex-wrap gap-2">
-            <li><a href="{{ route('index') }}" class="hover:text-arcilla">Inicio</a></li>
+            <li><a href="{{ route('index') }}" class="hover-linea">Inicio</a></li>
             <li aria-hidden="true">›</li>
-            <li><a href="{{ route('books.index') }}" class="hover:text-arcilla">Libros</a></li>
+            <li><a href="{{ route('books.index') }}" class="hover-linea">Libros</a></li>
             <li aria-hidden="true">›</li>
             <li aria-current="page" class="font-medium text-tinta">{{ $book->title }}</li>
         </ol>
     </nav>
 
-    <article class="mt-6 grid gap-8 md:grid-cols-[240px,1fr]">
+    <article class="mt-6 grid gap-8 md:grid-cols-[240px_1fr]">
         <div class="book-cover mx-auto w-56 md:w-full" aria-hidden="true">
             {{ mb_strtoupper(mb_substr($book->title, 0, 1)) }}
         </div>
 
         <div>
             <header>
-                <p class="text-sm font-semibold uppercase tracking-wide text-arcilla">
+                <p class="text-sm text-tinta-suave">
                     {{ $book->publisher?->name ?? 'Sin editorial' }}
                 </p>
                 <h1 class="mt-1 font-display text-3xl font-bold">{{ $book->title }}</h1>
                 <p class="mt-1 text-lg text-tinta-suave">de {{ $book->author }}</p>
             </header>
 
-            <dl class="mt-6 grid max-w-md grid-cols-[auto,1fr] gap-x-6 gap-y-2 text-sm">
+            <dl class="mt-6 grid max-w-md grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm">
                 <dt class="font-semibold">ISBN</dt>
                 <dd>{{ $book->isbn ?? '—' }}</dd>
 
@@ -69,12 +69,12 @@
             <form
                 action="{{ route('reviews.store', ['id' => $book->book_id]) }}"
                 method="post"
-                class="mt-6 rounded-xl border border-tinta/10 bg-white p-5"
+                class="mt-6 border border-tinta/20 p-5"
             >
                 @csrf
 
                 @if ($errors->any())
-                    <div class="mb-4 rounded border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-900" role="alert">
+                    <div class="mb-4 border-l-4 border-red-700 bg-red-50 px-4 py-3 text-sm text-red-900" role="alert">
                         <p class="font-semibold">Revisá la reseña antes de enviarla:</p>
                 <ul class="mt-1 list-inside list-disc">
                         @foreach ($errors->all() as $error)
@@ -91,7 +91,7 @@
                     <select
                         id="rating"
                         name="rating"
-                        @class(['mt-1 w-full rounded border border-tinta/30 px-3 py-2', 'border-red-500' => $errors->has('rating')])
+                        @class(['mt-1 w-full border border-tinta/30 px-3 py-2', 'border-red-500' => $errors->has('rating')])
                         aria-describedby="error-rating"
                     >
                         <option value="">Elegí una puntuación</option>
@@ -112,7 +112,7 @@
                         id="comment"
                         name="comment"
                         rows="3"
-                        @class(['mt-1 w-full rounded border border-tinta/30 px-3 py-2', 'border-red-500' => $errors->has('comment')])
+                        @class(['mt-1 w-full border border-tinta/30 px-3 py-2', 'border-red-500' => $errors->has('comment')])
                         aria-describedby="error-comment"
                     >{{ old('comment') }}</textarea>
                     @error('comment')
@@ -122,22 +122,22 @@
 
                 <button
                     type="submit"
-                    class="mt-4 rounded bg-arcilla px-5 py-2 font-semibold text-papel transition hover:bg-arcilla-hondo"
+                    class="btn-solido mt-4 px-5 py-2"
                 >
                     Publicar reseña
                 </button>
             </form>
         @else
-            <p class="mt-4 rounded border border-tinta/10 bg-papel-hondo px-4 py-3 text-sm text-tinta-suave">
-                <a href="{{ route('auth.login.form') }}" class="font-semibold text-arcilla hover:underline">Iniciá sesión</a>
+            <p class="mt-4 border-l-4 border-tinta/40 bg-papel-hondo px-4 py-3 text-sm text-tinta-suave">
+                <a href="{{ route('auth.login.form') }}" class="font-semibold text-arcilla hover-linea">Iniciá sesión</a>
                 para dejar tu reseña.
             </p>
         @endauth
 
-        <ul class="mt-6 space-y-4">
+        <ul class="mt-6">
             @forelse ($reviews as $review)
                 <li>
-                    <article class="rounded-xl border border-tinta/10 bg-white p-5">
+                    <article class="border-t border-tinta/20 py-4">
                         <div class="flex flex-wrap items-center justify-between gap-2">
                             <p class="font-semibold">{{ $review->user?->name ?? 'Lector/a' }}</p>
                             <p class="text-sm font-bold text-arcilla" aria-label="Puntaje: {{ $review->rating }} de 5">

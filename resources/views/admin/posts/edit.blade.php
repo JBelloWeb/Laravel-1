@@ -10,7 +10,7 @@
         action="{{ route('admin.posts.update', ['id' => $post->post_id]) }}"
         method="post"
         enctype="multipart/form-data"
-        class="mt-6 max-w-3xl rounded-xl border border-tinta/10 bg-white p-6"
+        class="mt-6 max-w-3xl border border-tinta/20 bg-white p-6"
     >
         @csrf
 

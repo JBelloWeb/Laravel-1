@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             [
                 'id' => 1,
                 'name' => 'Juan Peralta Bello',
-                'email' => 'admin@libreria.test',
+                'email' => 'admin@libreriasempere.test',
                 // Hash::make() crea el hash bcrypt de la contraseña.
                 'password' => Hash::make('password'),
                 'role' => 'admin',

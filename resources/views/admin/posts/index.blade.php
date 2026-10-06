@@ -8,21 +8,21 @@
         </div>
         <a
             href="{{ route('admin.posts.create') }}"
-            class="rounded bg-arcilla px-4 py-2 font-semibold text-papel transition hover:bg-arcilla-hondo"
+            class="btn-solido px-4 py-2"
         >
             Crear entrada
         </a>
     </header>
 
     @if ($posts->isEmpty())
-        <div class="mt-8 rounded-xl border border-dashed border-tinta/30 p-8 text-center">
+        <div class="mt-8 border border-dashed border-tinta/30 p-8 text-center">
             <p class="text-tinta-suave">Todavía no hay entradas cargadas.</p>
-            <a href="{{ route('admin.posts.create') }}" class="mt-3 inline-block font-semibold text-arcilla hover:underline">
+            <a href="{{ route('admin.posts.create') }}" class="mt-3 inline-block font-semibold text-arcilla hover-linea">
                 Crear la primera entrada →
             </a>
         </div>
     @else
-        <div class="mt-8 overflow-x-auto rounded-xl border border-tinta/10 bg-white">
+        <div class="mt-8 overflow-x-auto border border-tinta/20 bg-white">
             <table class="w-full text-left text-sm">
                 <caption class="sr-only">Listado de entradas del blog con sus acciones</caption>
                 <thead class="border-b border-tinta/10 bg-papel-hondo text-xs font-semibold uppercase tracking-wide text-tinta-suave">
@@ -42,11 +42,11 @@
                             </th>
                             <td class="px-4 py-3">
                                 @if ($post->published)
-                                    <span class="rounded-full bg-green-100 px-2 py-0.5 text-xs font-semibold text-green-800">
+                                    <span class="bg-green-100 px-2 py-0.5 text-xs font-semibold text-green-800">
                                         Publicada
                                     </span>
                                 @else
-                                    <span class="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800">
+                                    <span class="bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800">
                                         Borrador
                                     </span>
                                 @endif
@@ -65,19 +65,19 @@
                                 <div class="flex flex-wrap gap-3">
                                     <a
                                         href="{{ route('posts.show', ['id' => $post->post_id]) }}"
-                                        class="font-semibold text-arcilla hover:underline"
+                                        class="font-semibold text-arcilla hover-linea"
                                     >
                                         Ver
                                     </a>
                                     <a
                                         href="{{ route('admin.posts.edit', ['id' => $post->post_id]) }}"
-                                        class="font-semibold text-blue-700 hover:underline"
+                                        class="font-semibold text-blue-700 hover-linea"
                                     >
                                         Editar
                                     </a>
                                     <a
                                         href="{{ route('admin.posts.delete', ['id' => $post->post_id]) }}"
-                                        class="font-semibold text-red-700 hover:underline"
+                                        class="font-semibold text-red-700 hover-linea"
                                     >
                                         Eliminar
                                     </a>

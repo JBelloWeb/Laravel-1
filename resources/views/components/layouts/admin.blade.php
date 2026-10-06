@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ ($title ?? 'Panel') }} · Admin · Librería Umbral</title>
+        <title>{{ ($title ?? 'Panel') }} · Admin · Librería Sempere</title>
 
         {{-- Tailwind CSS v4 (browser build) --}}
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -26,7 +26,7 @@
     <body class="min-h-screen bg-papel-hondo font-sans text-tinta antialiased">
         <a
             href="#contenido"
-            class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-tinta focus:px-4 focus:py-2 focus:text-papel"
+            class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-tinta focus:px-4 focus:py-2 focus:text-papel"
         >
             Saltar al contenido principal
         </a>
@@ -42,7 +42,7 @@
             >
                 <div class="px-4 py-4">
                     <a href="{{ route('index') }}" class="font-display text-xl font-bold">
-                        Umbral <span class="text-amber-500">Admin</span>
+                        Sempere <span class="text-amber-500">Admin</span>
                     </a>
                 </div>
 
@@ -51,7 +51,7 @@
                         <a
                             href="{{ route('admin.home') }}"
                             @class([
-                                'block rounded px-3 py-2 transition hover:bg-white/10',
+                                'block px-3 py-2 hover-linea',
                                 'bg-white/15' => request()->routeIs('admin.home'),
                             ])
                             @if (request()->routeIs('admin.home')) aria-current="page" @endif
@@ -61,21 +61,21 @@
                         <a
                             href="{{ route('admin.posts.index') }}"
                             @class([
-                                'block rounded px-3 py-2 transition hover:bg-white/10',
+                                'block px-3 py-2 hover-linea',
                                 'bg-white/15' => request()->routeIs('admin.posts.*'),
                             ])
                             @if (request()->routeIs('admin.posts.*')) aria-current="page" @endif
                         >Entradas del blog</a>
                     </li>
                     <li>
-                        <a href="{{ route('index') }}" class="block rounded px-3 py-2 transition hover:bg-white/10">
+                        <a href="{{ route('index') }}" class="block px-3 py-2 hover-linea">
                             Ver el sitio
                         </a>
                     </li>
                     <li class="mt-2 border-t border-white/20 pt-2">
                         <form action="{{ route('auth.logout.process') }}" method="post">
                             @csrf
-                            <button type="submit" class="rounded px-3 py-2 text-left transition hover:bg-white/10">
+                            <button type="submit" class="block w-full px-3 py-2 text-left hover-linea">
                                 Cerrar sesión
                             </button>
                         </form>
@@ -88,12 +88,12 @@
                     @php($feedbackType = session('feedback.type', 'success'))
                     <div
                         role="status"
-                        @class([
-                            'mb-6 rounded-lg border px-4 py-3 text-sm font-medium',
-                            'border-green-300 bg-green-50 text-green-900' => $feedbackType === 'success',
-                            'border-red-300 bg-red-50 text-red-900' => $feedbackType === 'danger',
-                            'border-amber-300 bg-amber-50 text-amber-900' => $feedbackType === 'warning',
-                        ])
+                    @class([
+                        'mb-6 border-l-4 px-4 py-3 text-sm font-medium',
+                        'border-green-700 bg-green-50 text-green-900' => $feedbackType === 'success',
+                        'border-red-700 bg-red-50 text-red-900' => $feedbackType === 'danger',
+                        'border-amber-700 bg-amber-50 text-amber-900' => $feedbackType === 'warning',
+                    ])
                     >
                         {{ session('feedback.message') }}
                     </div>
