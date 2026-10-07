@@ -139,10 +139,86 @@ h3 {
     font-weight: 700;
 }
 
+/* Variante miniatura para las tarjetas horizontales
+   (catálogo y destacados): misma proporción 2/3, mucho más chica */
+.book-cover--mini {
+    width: 3.25rem;
+    font-size: 1.15rem;
+}
+
+@media (min-width: 640px) {
+    .book-cover--mini {
+        width: 3.75rem;
+        font-size: 1.3rem;
+    }
+}
+
+/* ------------------------------------------------------------------
+   Tarjeta de libro horizontal: una fila con portada chica a la
+   izquierda, datos en el medio y precio + flecha a la derecha.
+   Toda la fila es un enlace, así que el hover teñe la fila entera.
+   ------------------------------------------------------------------ */
+.tarjeta-libro {
+    transition: background-color 0.2s ease;
+}
+
+.tarjeta-libro:hover,
+.tarjeta-libro:focus-visible {
+    background-color: rgba(180, 83, 9, 0.07);
+}
+
+/* ------------------------------------------------------------------
+   Paginación de Laravel (vista Tailwind sin publicar): le damos la
+   estética impresa del sitio (papel, bordes tinta, página activa en
+   tinta). La clase .paginacion vive en el <nav> wrapper de cada vista.
+   ------------------------------------------------------------------ */
+.paginacion a,
+.paginacion span.bg-white,
+.paginacion span[aria-disabled="true"] > span,
+.paginacion span[aria-current="page"] > span {
+    background-color: var(--color-papel);
+    border-color: rgba(36, 31, 26, 0.35);
+    color: var(--color-tinta);
+}
+
+.paginacion a:hover {
+    background-color: var(--color-papel-hondo);
+}
+
+.paginacion span[aria-current="page"] > span {
+    background-color: var(--color-tinta);
+    border-color: var(--color-tinta);
+    color: var(--color-papel);
+}
+
+.paginacion [aria-disabled="true"] {
+    opacity: 0.45;
+}
+
+.paginacion p {
+    color: var(--color-tinta-suave);
+}
+
 /* Textos largos (cuerpo de las entradas del blog y sinopsis) */
 .texto-largo p {
     margin-bottom: 1rem;
     line-height: 1.75;
+}
+
+/* Selección de texto con los colores del sitio */
+::selection {
+    background: var(--color-arcilla);
+    color: #fff;
+}
+
+/* Accesibilidad: quien pide menos movimiento no quiere transiciones */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
 }
 
 /* Al imprimir, ocultamos la navegación */

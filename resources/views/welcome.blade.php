@@ -60,21 +60,26 @@
             </a>
         </div>
 
-        <ul class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul class="mt-6 grid border-t border-tinta/15 sm:grid-cols-2 sm:gap-x-10">
             @forelse ($featuredBooks as $book)
-                <li>
+                <li class="border-b border-tinta/15">
                     <a
                         href="{{ route('books.show', ['id' => $book->book_id]) }}"
-                        class="group block border-t-2 border-tinta pt-4"
+                        class="tarjeta-libro group flex items-center gap-4 px-1 py-4 sm:gap-5"
                     >
-                        <div class="book-cover" aria-hidden="true">
+                        <div class="book-cover book-cover--mini shrink-0" aria-hidden="true">
                             {{ mb_strtoupper(mb_substr($book->title, 0, 1)) }}
                         </div>
-                        <h3 class="mt-4 font-display text-lg font-semibold hover-linea">
-                            {{ $book->title }}
-                        </h3>
-                        <p class="text-sm text-tinta-suave">{{ $book->author }}</p>
-                        <p class="mt-2 font-semibold">${{ number_format($book->price, 2, ',', '.') }}</p>
+
+                        <div class="min-w-0 flex-1">
+                            <h3 class="font-display text-base font-semibold leading-snug sm:text-lg">
+                                <span class="hover-linea">{{ $book->title }}</span>
+                            </h3>
+                            <p class="mt-1 text-sm text-tinta-suave">{{ $book->author }}</p>
+                            <p class="mt-1 text-sm font-semibold">${{ number_format($book->price, 2, ',', '.') }}</p>
+                        </div>
+
+                        <span aria-hidden="true" class="text-arcilla transition-transform duration-200 group-hover:translate-x-1">→</span>
                     </a>
                 </li>
             @empty

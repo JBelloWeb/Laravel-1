@@ -13,8 +13,7 @@ class PostsController extends Controller
      */
     public function index(): View
     {
-        $posts = Post::with('categories')
-            ->where('published', true)
+        $posts = Post::where('published', true)
             ->latest('published_at')
             ->paginate(9);
 
@@ -26,7 +25,7 @@ class PostsController extends Controller
      */
     public function show(string $id): View
     {
-        $post = Post::with(['categories', 'user'])->findOrFail($id);
+        $post = Post::findOrFail($id);
 
         // Los borradores no se ven: 404 para el público en general,
         // pero el admin del panel puede previsualizar (botón "Ver").

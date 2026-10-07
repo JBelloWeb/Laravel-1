@@ -12,8 +12,7 @@ class BooksController extends Controller
      */
     public function index(): View
     {
-        $books = Book::with('publisher')  // eager loading: evita el N+1
-            ->latest()
+        $books = Book::latest()
             ->paginate(12);
 
         return view('libros.index', compact('books'));
@@ -25,11 +24,10 @@ class BooksController extends Controller
     public function show(string $id): View
     {
         // findOrFail → 404 si el id no existe.
-        $book = Book::with('publisher')->findOrFail($id);
+        $book = Book::findOrFail($id);
 
-        // Reseñas con su autor, más nuevas primero, paginadas.
+        // Reseñas, más nuevas primero, paginadas.
         $reviews = $book->reviews()
-            ->with('user')
             ->latest()
             ->paginate(10);
 

@@ -53,7 +53,7 @@
         @endforelse
     </ul>
 
-    <nav aria-label="Paginación del blog" class="mt-8">
+    <nav aria-label="Paginación del blog" class="paginacion mt-8">
         {{ $posts->links() }}
     </nav>
 </x-layouts.main>

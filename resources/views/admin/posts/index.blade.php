@@ -89,7 +89,7 @@
             </table>
         </div>
 
-        <nav aria-label="Paginación de entradas" class="mt-6">
+        <nav aria-label="Paginación de entradas" class="paginacion mt-6">
             {{ $posts->links() }}
         </nav>
     @endif

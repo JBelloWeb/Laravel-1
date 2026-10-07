@@ -14,14 +14,13 @@ class PostRepository implements PostRepositoryInterface
 {
     public function paginate(int $porPagina = 10): LengthAwarePaginator
     {
-        return Post::with('categories')
-            ->latest()
+        return Post::latest()
             ->paginate($porPagina);
     }
 
     public function findOrFail(int $id): Post
     {
-        return Post::with(['categories', 'user'])->findOrFail($id);
+        return Post::findOrFail($id);
     }
 
     public function create(array $datos, array $categorias = []): Post
